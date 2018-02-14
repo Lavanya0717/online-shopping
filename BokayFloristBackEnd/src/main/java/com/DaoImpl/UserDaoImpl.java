@@ -45,8 +45,7 @@ public class UserDaoImpl implements UserDao {
 		query.setParameter("user", username);
 		query.setParameter("pass",password);
 		List<User> list=query.list();
-		for(User user:list)
-			if (username.equals(user.getUsername()) && password.equals(user.getPassword()))
+		if(list!=null && list.size()>0)
 					return true;
 		return false;
 	}

@@ -47,6 +47,9 @@
           <li><a href="${e}admin/adminAdding">Add Details</a></li>
 		<li><a href="${e}admin/viewDetailsAdmin">View Details</a></li>
 	</c:if>
+	<li><a href="${e}cart">
+      <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;Cart</a>
+      </li> 
 	<li><a>Welcome ${user.username}</a></li>   
    <li><a href="<c:url value="/perform_logout"/>">
          <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
