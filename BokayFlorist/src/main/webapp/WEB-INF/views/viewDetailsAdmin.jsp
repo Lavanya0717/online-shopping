@@ -82,10 +82,10 @@
   </select>        </div>
       </div>
 <table class="table table-hover myFont" id="productTable">
-<tr><th>Product Id</th><th>Product Name</th><th>Product Description</th><th>Price</th><th>Product Quantity</th><th>Category</th><th>Supplier</th><th colspan="2">Operation</th></tr>
+<tr><th>Product Id</th><th>Product Name</th><th>Product Description</th><th>Price</th><th>Product Quantity</th><th>Category</th><th>Supplier</th><th>Image</th><th colspan="2">Operation</th></tr>
 <c:forEach items="${proList}" var="product">
 <tr>
-<td>${product.proId}</td><td>${product.proName}</td><td>${product.proDesc}</td><td>${product.proPrice}</td><td>${product.proQuantity}</td><td>${product.category.categoryName}</td><td>${product.supplier.supplierName}</td>
+<td>${product.proId}</td><td>${product.proName}</td><td>${product.proDesc}</td><td>${product.proPrice}</td><td>${product.proQuantity}</td><td>${product.category.categoryName}</td><td>${product.supplier.supplierName}</td>${product.imageName}<td>
 <td>
 <a href="${e}admin/updateProduct?proId=${product.proId}" id="update" class="btn btn-success">Update</a>
 </td><td>

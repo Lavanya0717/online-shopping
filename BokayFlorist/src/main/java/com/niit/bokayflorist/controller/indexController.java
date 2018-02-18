@@ -15,6 +15,10 @@ public class indexController {
 		return "index";
 	}
 	
+	@RequestMapping("/aboutUs")
+	public String aboutUs(){
+		return "aboutUs";
+	}
 	
 	
 	@RequestMapping("error")

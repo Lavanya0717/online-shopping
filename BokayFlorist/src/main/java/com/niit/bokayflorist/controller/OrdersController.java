@@ -27,16 +27,21 @@ public class OrdersController {
 	@Autowired
 	Orders orders;
 	
-	@RequestMapping("/myOrders")
+	@RequestMapping("/user/myOrders")
 	public ModelAndView myOrders() {
 		ModelAndView m = new ModelAndView("orders");
 		List<Orders> list=ordersDAO.getOrdersByUser(SecurityContextHolder.getContext().getAuthentication().getName());
 		m.addObject("orderList", list);
 		return m;
 	}
-	@RequestMapping(value="/placeOrder",method=RequestMethod.POST)
+	@RequestMapping("/user/thankYou")
+	public ModelAndView thankYou() {
+		ModelAndView m = new ModelAndView("ThankYou");
+		return m;
+	}
+	@RequestMapping(value="/user/placeOrder",method=RequestMethod.POST)
 	public ModelAndView placeOrder(@RequestParam Map<String,String> data) {
-		ModelAndView m = new ModelAndView("redirect:/myOrders");
+		ModelAndView m = new ModelAndView("redirect:/user/thankYou");
 		ShippingAddress shippingAddress=new ShippingAddress();
 		shippingAddress.setHouse_locality(data.get("locality"));
 		shippingAddress.setCity(data.get("city"));
@@ -47,10 +52,11 @@ public class OrdersController {
 		User userDetails=new User();
 		userDetails.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 		orders.setOrderUserDetails(userDetails);
-		orders.setOrderId((long)Math.random()*100000000);
+		orders.setOrderId((long)(Math.random()*100000000));
 		List<Cart> list=cartDAO.getCartByUser(SecurityContextHolder.getContext().getAuthentication().getName());
 		for(Cart c:list){
 			orders.setId(0);
+			
 			orders.setOrderImage(c.getCartImage());
 			orders.setOrderPrice(c.getCartPrice()*c.getCartQuantity());
 			orders.setOrderQuantity(c.getCartQuantity());
@@ -61,7 +67,4 @@ public class OrdersController {
 		}
 		return m;
 	}
-	
-
 }
-
