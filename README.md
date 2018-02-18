@@ -25,4 +25,4 @@ Run maven build for building and grunt serve for preview.
 
 Testing
 
-Running unit test cases.
+Running unit test cases
